@@ -4,9 +4,9 @@ import org.allaymc.server.extension.Extension
 import org.allaymc.server.plugin.AllayPluginManager
 
 @Suppress("unused")
-class NodeScriptExtension : Extension() {
+class NodePluginExtension : Extension() {
     override fun main(args: Array<out String>?) {
-        AllayPluginManager.registerSource(NodeScriptSource)
-        AllayPluginManager.registerLoaderFactory(NodeScriptLoader.Factory)
+        AllayPluginManager.registerSource(NodePluginSource)
+        AllayPluginManager.registerLoaderFactory(NodePluginLoader.Factory)
     }
 }

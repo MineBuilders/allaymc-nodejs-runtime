@@ -1,0 +1,9 @@
+{
+  "name": "nodejs-plugin-exmaple",
+  "version": "0.0.1-alpha",
+  "description": "A example script plugin with allaymc-nodejs-runtime.",
+  "main": "dist/index.js",
+  "scripts": {
+  },
+  "author": "Cdm2883"
+}

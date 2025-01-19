@@ -20,3 +20,4 @@ dependencyResolutionManagement {
 }
 
 include(":script-loader")
+include(":script-definition")
