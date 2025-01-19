@@ -3,17 +3,7 @@ on:
   push:
     branches:
       - master
-    paths:
-      - '.github/workflows/preview-build.yml'
-      - 'src/**'
-      - 'build.gradle.kts'
-      - 'settings.gradle.kts'
   pull_request:
-    paths:
-      - '.github/workflows/preview-build.yml'
-      - 'src/**'
-      - 'build.gradle.kts'
-      - 'settings.gradle.kts'
 
 jobs:
   build:
@@ -32,9 +22,10 @@ jobs:
       - name: Build with Gradle
         run: |
           chmod +x ./gradlew
-          ./gradlew :shadowJar
+          ./gradlew :script-loader:shadowJar
 
-      - name: Upload artifact
+      - name: Upload artifact (loader)
         uses: actions/upload-artifact@v4
         with:
-          path: build/libs/*.jar
+          name: kts-loader-${{ github.sha }}
+          path: script-loader/build/libs/*.jar
