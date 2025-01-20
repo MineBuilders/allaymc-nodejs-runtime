@@ -3,8 +3,8 @@
  * ```json
  * // this will be mixed in package.json
  * {
- *     "dependencies": [],  // npm
- *     "allayDependencies": [],  // plugins
+ *     "dependencies": {},  // npm
+ *     "allayDependencies": {},  // plugins
  * }
  * ```
  * @name Plugin Name

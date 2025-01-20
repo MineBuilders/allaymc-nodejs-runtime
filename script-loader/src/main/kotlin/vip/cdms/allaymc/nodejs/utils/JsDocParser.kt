@@ -16,11 +16,10 @@ fun parseJsDoc(doc: String): JsDoc {
     var isPropertyKey = false
     val propertyKey = StringBuilder()
     val propertyValue = StringBuilder()
-
     var droppedFirstEmptyProperty = false
+
     fun saveProperty() {
-        if (!droppedFirstEmptyProperty) return Unit.also { droppedFirstEmptyProperty = true }
-        properties += propertyKey.toString() to propertyValue.toString()
+        properties[propertyKey.toString()] = propertyValue.toString().trimEnd()
         propertyKey.clear()
         propertyValue.clear()
     }
@@ -55,7 +54,8 @@ fun parseJsDoc(doc: String): JsDoc {
             i++
             continue
         } else if (isTrimStarting && c == '@') {
-            saveProperty()
+            if (droppedFirstEmptyProperty) saveProperty()
+            droppedFirstEmptyProperty = true
             isTrimStarting = false
             isContent = false
             isPropertyKey = true

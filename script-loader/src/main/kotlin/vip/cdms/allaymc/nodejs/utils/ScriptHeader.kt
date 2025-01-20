@@ -16,11 +16,11 @@ fun parseScriptHeader(code: String): SingleScriptHeader {
     if (doc.content != null) while (i < doc.content.length) {
         val c = doc.content[i]
 
-        fun substringOrNull(range: IntRange) = runCatching { doc.content.substring(range) }.getOrNull()
-        if (c == '\n' && substringOrNull(i+1..i+7) == "```json") {
+        fun subNextTo(length: Int) = runCatching { doc.content.substring(i+1..i+length) }.getOrNull()
+        if (c == '\n' && subNextTo(7) == "```json") {
             isContent = false
             i += 8
-        } else if (c == '\n' && !isContent && substringOrNull(i+1..i+3) == "```") {
+        } else if (c == '\n' && !isContent && subNextTo(3) == "```") {
             isContent = true
             i += 4
         } else if (isContent) {
