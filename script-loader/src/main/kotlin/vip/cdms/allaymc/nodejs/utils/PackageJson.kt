@@ -12,9 +12,10 @@ class PackageJson(val raw: JsonObject) {
     val name get() = raw["name"]?.jsonPrimitive?.content
     val version get() = raw["version"]?.jsonPrimitive?.content
     val description get() = raw["description"]?.jsonPrimitive?.content
+    val module get() = raw["module"]?.jsonPrimitive?.boolean
     val main get() = raw["main"]?.jsonPrimitive?.content
 
-//    val dependencies get() = raw["dependencies"]?.jsonObject?.toMap()?.mapValues { it.value.jsonPrimitive.content }
+    val dependencies get() = raw["dependencies"]?.jsonObject?.toMap()?.mapValues { it.value.jsonPrimitive.content }
     val allayDependencies get() = raw["allayDependencies"]?.jsonObject?.toMap()?.mapValues { it.value.jsonPrimitive.content }
 
     val author = raw["author"]
